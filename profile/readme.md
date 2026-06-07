@@ -11,8 +11,6 @@ Autonomous agents (like Gemini 3.5 Flash in Antigravity 2.0) are amazing at code
 
 ## The Core Concept
 
-<p align="center">
-  <img src="https://github.com/swatchdog-dev/swatchdog-antigravity-bridge/raw/main/swatchdog-handshake-visual.png" width="80%" alt="Visual drift loop">
 </p>
 
 1. **Agent hallucinations a rogue layout** (e.g., raw hex `#FF00FF` instead of your semantic `color.primary`).
