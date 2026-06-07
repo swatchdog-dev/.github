@@ -1,7 +1,7 @@
 # Swatchdog Antigravity Bridge (Beta)
 
 <!-- Add image_3.png here as a clean header -->
-<img src="https://github.com/swatchdog-dev/swatchdog-antigravity-bridge/raw/main/swatchdog-banner.png" width="100%" alt="Swatchdog Agentic Validator Banner">
+<img src="https://raw.githubusercontent.com/swatchdog-dev/.github/main/swatchdog-github-banner.svg" alt="SwatchDog" width="640">
 
 **The World's First Agentic Design Token Validator**
 
