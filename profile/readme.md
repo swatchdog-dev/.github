@@ -3,38 +3,44 @@
 <!-- Add image_3.png here as a clean header -->
 ![Swatchdog Banner](swatchdog-github-banner.svg)
 
-**Agentic Design Token Validator**
+# swatchdog — free sandbox
 
-Autonomous agents (like Gemini 3.5 Flash in Antigravity 2.0) are amazing at code, but terrible at consistent visual style. `Swatchdog` is a hosted, real-time Model Context Protocol (MCP) validator that invisible audits every CSS change an agent makes, forcing it to catch and correct its own "visual drift" against your strict design tokens before it hits your codebase.
+**Give your AI agent a design standard to build from — then ask it to check its
+own work against that standard, on demand, over MCP.**
 
----
+swatchdog is a hosted, license-gated MCP server. Point your agent at a design
+pack and call `check_drift`: swatchdog runs deterministic code against the
+**declared** color, radius, spacing, and type tokens in the CSS/markup your agent
+generated, and returns structured findings with suggested token fixes. The check
+is yours to invoke — swatchdog doesn't intercept writes or enforce anything on its
+own; the build-and-check loop runs in your agent.
 
-## The Core Concept
+> Checks declared styles and tokens, not pixels — no browser, no screenshots, no
+> rendered inspection.
 
-</p>
+## Free sandbox: the Studio family
 
-1. **Agent hallucinations a rogue layout** (e.g., raw hex `#FF00FF` instead of your semantic `color.primary`).
-2. **Swatchdog MCP Validator intercepts the write.**
-3. **Validator rejects the non-compliant code** with precise line references.
-4. **Agent receives Swatchdog's corrections** and autonomously refactors the CSS using valid tokens.
+One full design family — **Studio** (5 colorways) — free, over MCP:
 
----
+- **Guidance** — read the pack's tokens, rules, and CSS so your agent builds from
+  a real standard.
+- **`check_drift`** — run the live, deterministic check against what it built.
 
-## Quick Start (v0.1.0)
+No download, no signup. The full catalog (Workbench, Showcase, Terminal) is at
+**swatchdog.dev**.
 
-For Antigravity 2.0 Desktop or Cursor local workspaces:
+## Connect
 
-1. **Install the Configuration:** Create a `.agents` folder at your project root and create `mcp_config.json`.
-2. **Add Your Swatchdog Key:** Paste your connection snippet:
+Works with any MCP-aware agent (Claude Code, Cursor, Antigravity, and other MCP
+clients). Add an HTTP MCP server with the shared sandbox key:
 
-```json
+```jsonc
 {
   "mcpServers": {
-    "swatchdog-validator": {
-      "serverUrl": "[https://swatchdog-mcp.run.app/mcp/](https://swatchdog-mcp.run.app/mcp/)",
-      "headers": {
-        "Authorization": "Bearer YOUR_MINTED_KEY"
-      }
+    "swatchdog-sandbox": {
+      "type": "http",
+      "url": "https://<CLOUD-RUN-HOST>/mcp",
+      "headers": { "Authorization": "Bearer swt_sandbox_studio" }
     }
   }
 }
