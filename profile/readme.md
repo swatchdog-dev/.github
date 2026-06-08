@@ -39,7 +39,7 @@ clients). Add an HTTP MCP server with the shared sandbox key:
   "mcpServers": {
     "swatchdog-sandbox": {
       "type": "http",
-      "url": "https://<CLOUD-RUN-HOST>/mcp",
+      "url": "https://swatchdog-mcp-970396648818.us-central1.run.app/mcp",
       "headers": { "Authorization": "Bearer swt_sandbox_studio" }
     }
   }
