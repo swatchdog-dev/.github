@@ -29,6 +29,30 @@ One full design family — **Studio** (5 colorways) — free, over MCP:
 No download, no signup. The full catalog (Workbench, Showcase, Terminal) is at
 **swatchdog.dev**.
 
+## Using the free sandbox
+
+Your sandbox key unlocks the **Studio** family — five colorways. Use one as your `paletteId`:
+
+| paletteId | Look |
+|---|---|
+| `studio-ink-room` | deep indigo-blue on cream |
+| `studio-blue-hour` | moody dark blue |
+| `studio-acid-print` | electric green on pale chartreuse |
+| `studio-clay-gallery` | warm terracotta |
+| `studio-rose-archive` | soft rose / plum |
+
+**The loop (works in any MCP-aware agent):**
+1. **See what's available** — read `swatchdog://catalog` (a free key lists the Studio packs).
+2. **Load the standard** — read a pack's tokens, e.g. `swatchdog://pack/studio-blue-hour/tokens`.
+3. **Build** your UI using those tokens.
+4. **Check** — call `check_drift("studio-blue-hour", content="<your CSS/markup>")`.
+   You get structured findings on declared color/radius/spacing/type tokens, each with a
+   suggested token fix. On-demand — the loop is yours.
+
+**Want a different look?** The full catalog (Workbench, Showcase, Terminal) is at
+**swatchdog.dev** — $19 per family or $49 all-in. Call `check_drift` against a family you
+don't have and swatchdog points you to the upgrade.
+
 ## Connect
 
 Works with any MCP-aware agent (Claude Code, Cursor, Antigravity, and other MCP
