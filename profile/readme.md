@@ -3,7 +3,7 @@
 <!-- Add image_3.png here as a clean header -->
 ![Swatchdog Banner](swatchdog-github-banner.svg)
 
-**The World's First Agentic Design Token Validator**
+**Agentic Design Token Validator**
 
 Autonomous agents (like Gemini 3.5 Flash in Antigravity 2.0) are amazing at code, but terrible at consistent visual style. `Swatchdog` is a hosted, real-time Model Context Protocol (MCP) validator that invisible audits every CSS change an agent makes, forcing it to catch and correct its own "visual drift" against your strict design tokens before it hits your codebase.
 
