@@ -79,6 +79,8 @@ We log minimal usage metadata — the source tag, which pack, and the finding
 outcome, tied to the account the key belongs to — never your license key, your
 source code, or your tokens.
 
+Created and maintained by swatchdog.dev.
+
 ---
 
 ## Client Integration
@@ -98,4 +100,4 @@ Add Swatchdog to your agent's MCP config:
 }
 
 
-Created and maintained by swatchdog.dev.
+
