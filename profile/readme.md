@@ -90,12 +90,11 @@ Add Swatchdog to your agent's MCP config:
 ```json
 {
   "mcpServers": {
-    "swatchdog": {
+    "swatchdog-sandbox": {
       "type": "http",
       "url": "https://swatchdog-mcp-970396648818.us-central1.run.app/mcp",
       "headers": { "Authorization": "Bearer swt_sandbox_studio" }
     }
-
   }
 }
 
