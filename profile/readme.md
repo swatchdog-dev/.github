@@ -54,6 +54,32 @@ Swatchdog doesn't just flag drift; it maps each off-token value to the closest v
 representation and complex multi-file token resolution are planned for Phase 2.*
 
 ---
+## Supported tool
+
+check_drift — checks a CSS string against a pack or a custom token set.
+
+content (string, required) — the CSS/markup to check.
+paletteId (string, optional) — a pack id (e.g. studio-blue-hour). Pack mode.
+tokens (object, optional) — your own token set. BYO mode (paid key).
+source (string, optional) — telemetry tag (pack, css, tailwind).
+
+## Sandbox & gating
+
+Free sandbox key (swt_sandbox_studio) — check CSS against the free Studio family.
+Paid key — premium families (Workbench, Showcase, Terminal) and BYO checks.
+If a free client attempts a premium or BYO check, the tool returns a structured JSON
+upgrade payload; the agent surfaces a link to buy a single pack ($19) or the all-in
+bundle ($49).
+
+## Privacy & telemetry
+All checks are on-demand and transient.
+
+No source code, files, or custom tokens are ever stored on our servers.
+We log minimal usage metadata — the source tag, which pack, and the finding
+outcome, tied to the account the key belongs to — never your license key, your
+source code, or your tokens.
+
+---
 
 ## Client Integration
 
@@ -71,28 +97,5 @@ Add Swatchdog to your agent's MCP config:
   }
 }
 
----
-## Supported tool
-
-check_drift — checks a CSS string against a pack or a custom token set.
-
-content (string, required) — the CSS/markup to check.
-paletteId (string, optional) — a pack id (e.g. studio-blue-hour). Pack mode.
-tokens (object, optional) — your own token set. BYO mode (paid key).
-source (string, optional) — telemetry tag (pack, css, tailwind).
-
-## Sandbox & gating
-Free sandbox key (swt_sandbox_studio) — check CSS against the free Studio family.
-Paid key — premium families (Workbench, Showcase, Terminal) and BYO checks.
-If a free client attempts a premium or BYO check, the tool returns a structured JSON
-upgrade payload; the agent surfaces a link to buy a single pack ($19) or the all-in
-bundle ($49).
-
-## Privacy & telemetry
-All checks are on-demand and transient.
-No source code, files, or custom tokens are ever stored on our servers.
-We log minimal usage metadata — the source tag, which pack, and the finding
-outcome, tied to the account the key belongs to — never your license key, your
-source code, or your tokens.
 
 Created and maintained by swatchdog.dev.
