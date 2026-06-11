@@ -3,14 +3,21 @@
 <!-- Add image_3.png here as a clean header -->
 ![Swatchdog Banner](swatchdog-github-banner.svg)
 
-# Swatchdog MCP Server
+# Swatchdog MCP Server 
 
-> Give your AI agents a design-system standard to build from, so they use your real
-> color, radius, spacing, and type tokens instead of guessing.
+> Give your AI agents a visual system guide so they write brand-consistent styles instead of guessing color values, radii, and layouts.
+
+---
+
+### See Swatchdog in Action
+
+https://github.com/user-attachments/assets/6ae8b242-d6c7-4a29-8892-27b067835308
+
+# Swatchdog
 
 **Swatchdog** is a Model Context Protocol (MCP) server that runs **on-demand** CSS
-design-token drift checks for AI coding assistants (Google Antigravity, Claude Code,
-Cursor, and other MCP-aware clients).
+design-token drift checks for AI coding assistants (Claude Code, Claude Desktop, Cursor,
+Google Antigravity, and other MCP-aware clients — plus claude.ai via a connector).
 
 When your agent asks, Swatchdog checks the generated CSS against a chosen design pack —
 or your own tokens — and returns the off-token color, radius, spacing, and type values
@@ -34,44 +41,70 @@ Swatchdog adds an **on-demand drift check** to the agentic loop. When connected:
 
 ## Core Features
 
-### 1. Pack Mode (Preset Validation)
+### 1. Pack Mode (Preset Checks)
 Check your styles against a curated Swatchdog design family — **Workbench, Showcase,
 Terminal**, plus the free **Studio** sandbox. Fast, zero-configuration checks.
 
-### 2. BYO Mode (Bring Your Own Tokens) *New in v3*
+### 2. BYO Mode (Bring Your Own Tokens)
 Check styles against your project's own custom design system.
 * The agent extracts tokens locally from files like `tailwind.config.js` or your CSS
   variables and passes them as parameters.
 * Content-only and stateless — your source code and custom tokens are never stored.
+* **Free to try** on the connector endpoint (no key — shared, rate-capped lane), or
+  uncapped with any paid key, including the standalone **$12 drift-check license**.
 
-### 3. Intelligent Drift Suggestions
+### 3. Connector Endpoint (keyless) — *new*
+A dedicated, trimmed BYO-only surface built for chat clients:
+* One read-only tool — `check_design_drift(reference_tokens, code)` — returning a
+  compact, machine-first report sized for an agent's fix-and-recheck loop.
+* **No key required**: keyless calls ride a shared free lane (best-effort, rate-capped
+  with a clean `429 + Retry-After` at capacity). A paid key in the `Authorization`
+  header gets its own uncapped lane.
+* In **claude.ai**: add it as a custom connector (Settings → Connectors → Add custom
+  connector, URL below, no credentials).
+
+### 4. Intelligent Drift Suggestions
 Swatchdog doesn't just flag drift; it maps each off-token value to the closest valid token:
 * **Color**: off-palette hex/rgb → the nearest theme token.
 * **Radius**: off-scale border-radii → the nearest radius token.
 * **Spacing & Typography**: off-scale padding/margin, font-size, and font-family.
 
-*Note: validation currently covers hex and standard color formats. HSL-channel
+*Note: checks currently cover hex and standard color formats. HSL-channel
 representation and complex multi-file token resolution are planned for Phase 2.*
 
 ---
-## Supported tool
 
-check_drift — checks a CSS string against a pack or a custom token set.
+## Supported tools
 
-content (string, required) — the CSS/markup to check.
-paletteId (string, optional) — a pack id (e.g. studio-blue-hour). Pack mode.
-tokens (object, optional) — your own token set. BYO mode (paid key).
-source (string, optional) — telemetry tag (pack, css, tailwind).
+**`check_drift`** — main endpoint. Checks a CSS string against a pack or a custom token set.
 
-## Sandbox & gating
+* `content` (string, required) — the CSS/markup to check.
+* `paletteId` (string, optional) — a pack id (e.g. `studio-blue-hour`). Pack mode.
+* `tokens` (object, optional) — your own token set. BYO mode (any paid key).
+* `source` (string, optional) — telemetry tag (`pack`, `css`, `tailwind`).
 
-Free sandbox key (swt_sandbox_studio) — check CSS against the free Studio family.
-Paid key — premium families (Workbench, Showcase, Terminal) and BYO checks.
-If a free client attempts a premium or BYO check, the tool returns a structured JSON
-upgrade payload; the agent surfaces a link to buy a single pack ($19) or the all-in
-bundle ($49).
+**`check_design_drift`** — connector endpoint. BYO-only, keyless-friendly.
+
+* `reference_tokens` (object, required) — your design tokens
+  (e.g. `{"color":{"primary":"#b06ed0"},"radius":{"md":"6px"}}`).
+* `code` (string, required) — the CSS/markup to check.
+* Returns per-violation: axis · found value · expected token + value · location.
+
+## Access & pricing (one-time, no subscriptions)
+
+| Lane | What you get | Where |
+|---|---|---|
+| **Free** — sandbox key `swt_sandbox_studio` | pack checks vs the **Studio** family | main endpoint |
+| **Free** — keyless | BYO checks, shared rate-capped lane | connector endpoint |
+| **$12** — drift-check license | BYO checks, your own uncapped key | both endpoints (key sent as a bearer header) |
+| **$19 / $49** — pack or bundle | premium families (Workbench, Showcase, Terminal) **+** a paid key (BYO included) | both endpoints |
+
+If a free caller attempts a premium or BYO check on the main endpoint, the tool returns
+a structured JSON upgrade payload with where to get a key — at
+[swatchdog.dev](https://swatchdog.dev).
 
 ## Privacy & telemetry
+
 All checks are on-demand and transient.
 
 No source code, files, or custom tokens are ever stored on our servers.
@@ -79,13 +112,15 @@ We log minimal usage metadata — the source tag, which pack, and the finding
 outcome, tied to the account the key belongs to — never your license key, your
 source code, or your tokens.
 
-Created and maintained by swatchdog.dev.
+Created and maintained by [swatchdog.dev](https://swatchdog.dev) ·
+privacy policy: [swatchdog.dev/privacy.html](https://swatchdog.dev/privacy.html) ·
+support: hey@swatchdog.dev
 
 ---
 
 ## Client Integration
 
-Add Swatchdog to your agent's MCP config:
+**Main endpoint** (packs + BYO, bearer key — the free sandbox key shown):
 
 ```json
 {
@@ -97,6 +132,20 @@ Add Swatchdog to your agent's MCP config:
     }
   }
 }
+```
 
+**Connector endpoint** (*In process: Pending Connector Submission Approval* BYO-only, no key needed — add a key to remove the rate cap):
 
+```json
+{
+  "mcpServers": {
+    "swatchdog-check": {
+      "type": "http",
+      "url": "https://swatchdog-connector-970396648818.us-central1.run.app/mcp"
+    }
+  }
+}
+```
 
+[In process: Pending connector submission approval] In **claude.ai**: Settings → Connectors → Add custom connector → paste the connector
+URL above — no credentials needed.
