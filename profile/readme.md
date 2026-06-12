@@ -11,8 +11,8 @@
 
 https://github.com/user-attachments/assets/6ae8b242-d6c7-4a29-8892-27b067835308
 
-Tested Live: https://github.com/swatchdog-dev/swatchdog-mcp/blob/main/docs/demo/live_session.md
-Full Test Transcript, all green: https://github.com/swatchdog-dev/swatchdog-mcp/blob/main/docs/demo/part-b-transcript.txt
+**Tested Live**[Claude.ai connector run] (swatchdog-mcp/blob/main/docs/demo/live_session.md)
+**Full Test Transcript, all green**[part-b-transcript] (swatchdog-mcp/blob/main/docs/demo/part-b-transcript.txt)
 
 
 # Swatchdog
