@@ -9,7 +9,7 @@
 
 ### See Swatchdog in Action
 
-**Tested live:** [claude.ai connector run →](docs/demo/live_session.md)
+**Tested live:** [claude.ai connector run →](swatchdog-mcp/docs/demo/live_session.md)
 **Full test transcript, all green:** [part-b-transcript.txt](docs/demo/part-b-transcript.txt)
 
 https://github.com/user-attachments/assets/6ae8b242-d6c7-4a29-8892-27b067835308
