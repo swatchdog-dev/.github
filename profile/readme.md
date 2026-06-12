@@ -11,6 +11,10 @@
 
 https://github.com/user-attachments/assets/6ae8b242-d6c7-4a29-8892-27b067835308
 
+Tested Live: https://github.com/swatchdog-dev/swatchdog-mcp/blob/main/docs/demo/live_session.md
+Full Test Transcript, all green: https://github.com/swatchdog-dev/swatchdog-mcp/blob/main/docs/demo/part-b-transcript.txt
+
+
 # Swatchdog
 
 **Swatchdog** is a Model Context Protocol (MCP) server that runs **on-demand** CSS
@@ -33,7 +37,7 @@ Swatchdog adds an **on-demand drift check** to the agentic loop. When connected:
 1. The agent detects your design tokens (or you pick a pack).
 2. The agent calls Swatchdog to check the CSS it generated.
 3. Swatchdog returns precise suggestions (e.g., *"Use `radius.sm` (5px) instead of 7px"*).
-4. The agent applies the fixes on a new Git branch for your review.
+4. The agent applies the fixes. The loop, and the review, stay yours.
 
 ---
 
