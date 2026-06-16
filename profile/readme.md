@@ -42,7 +42,7 @@ Swatchdog adds an **on-demand drift check** to the agentic loop. When connected:
 A linter checks whether your code is valid and well-formatted. swatchdog checks whether your design is on-system. A linter happily passes color: #ff00ff because it's valid CSS — it has no idea magenta isn't in your palette. swatchdog catches exactly that: colors, spacing, radii, and type that have drifted from your reference, even when the code is flawless. Lint catches broken code; swatchdog catches broken design.
 
 ### Can't I just give my AI agent the design tokens or a design.md?
-You can, and it'll still drift. Agents approximate and interpolate even with the rules right in front of them — a tokens file or a design.md is instruction, and having the rules isn't the same as following them. swatchdog verifies conformance in the build loop, where the drift actually happens.
+You can, and it'll still drift. Agents approximate and interpolate even with the rules right in front of them — a tokens file or a design.md is instruction. Having the rules isn't the same as following them. swatchdog verifies conformance in the build loop, where the drift actually happens.
 >
 
 ---
