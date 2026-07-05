@@ -157,3 +157,5 @@ support: hey@swatchdog.dev
 
 In **claude.ai**: Settings → Connectors → Add custom connector → paste the connector
 URL above — no credentials needed.
+
+· [A Ziola Project](https://www.ziola.dev/index.html)
