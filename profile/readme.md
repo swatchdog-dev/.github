@@ -3,7 +3,12 @@
 
 # Swatchdog MCP Server 
 
-> Give your AI agents a visual system guide so they write brand-consistent styles instead of guessing color values, radii, and layouts.
+> Give your AI agents a visual system guide so they write brand-consistent styles instead of guessing color values, radii, and layouts. 
+
+## ✅ Now in the Anthropic Connector Directory
+
+swatchdog is listed: **https://claude.ai/directory/connectors/swatchdog**
+In Claude, open **Settings → Connectors**, search **swatchdog**, and click **Connect** — no URL, no key, no setup.
 
 ---
 
@@ -127,6 +132,9 @@ support: hey@swatchdog.dev
 ---
 
 ## Client Integration
+
+In Claude (easiest): Settings → Connectors → find swatchdog → Connect. Nothing to paste.
+Prefer manual? Add custom connector → paste the connector URL below → leave auth empty.
 
 **Main endpoint** (packs + BYO, bearer key — the free sandbox key shown):
 
